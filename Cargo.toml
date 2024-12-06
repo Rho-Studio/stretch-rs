@@ -1,0 +1,32 @@
+[package]
+name = "stretchrs"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+
+[lib]
+name = "stretchrs"
+
+[[bin]]
+name = "stretchrs"
+path = "src/main.rs"
+
+[dependencies]
+image = { version = "0.25.5", features = ["rayon"] }
+ndarray = { version = "0.16.1", features = ["rayon"] }
+ndarray-stats = "0.6.0"
+noisy_float = "0.2.0"
+rayon = "1.10.0"
+tiff = "0.9.1"
+
+[dependencies.rawloader]
+version = "0.37"
+path = "./vendor/rawloader"
+
+[dependencies.imagepipe]
+version = "0.5"
+path = "./vendor/imagepipe"
+
+[profile.release]
+overflow-checks = false

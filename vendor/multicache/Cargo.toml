@@ -1,0 +1,14 @@
+[package]
+name = "multicache"
+version = "0.6.1"
+authors = ["Pedro Côrte-Real <pedro@pedrocr.net>"]
+description = "An LRU cache where each object has a given weight"
+documentation = "https://docs.rs/multicache/"
+#homepage = "..."
+repository = "https://github.com/pedrocr/multicache"
+license = "LGPL-3.0-only"
+#categories = []
+edition = "2018"
+
+[dependencies]
+linked-hash-map = "0.5.6"
