@@ -1,9 +1,16 @@
 [package]
 name = "stretchrs"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "A crate to facilitate stretching linear images using the midtone transfer function"
+authors = ["Anshul Sanghi <contact@anshulsanghi.tech>"]
 edition = "2021"
+homepage = "https://github.com/anshap1719/image-hdr"
+repository = "https://github.com/anshap1719/image-hdr"
+keywords = ["image", "stretch", "linear"]
+categories = ["multimedia"]
+license = "Apache-2.0"
+readme = "./README.md"
+
 
 [lib]
 name = "stretchrs"
@@ -18,4 +25,23 @@ ndarray = { version = "0.16.1", features = ["rayon"] }
 rayon = "1.10.0"
 
 [profile.release]
-overflow-checks = false
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[lints.clippy]
+# Clippy lint groups
+correctness = { level = "deny", priority = 0 }
+suspicious = { level = "deny", priority = 0 }
+complexity = { level = "deny", priority = 0 }
+perf = { level = "deny", priority = 0 }
+style = { level = "deny", priority = 0 }
+pedantic = { level = "deny", priority = 0 }
+cargo = { level = "deny", priority = 0 }
+
+# Overrides
+too_many_lines = { level = "deny", priority = 1 }
+unwrap_used = { level = "deny", priority = 1 }
+get_unwrap = { level = "deny", priority = 1 }
+fallible_impl_from = { level = "deny", priority = 1 }
+module_name_repetitions = { level = "allow", priority = 1 }
