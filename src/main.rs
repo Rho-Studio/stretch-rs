@@ -1,6 +1,5 @@
 use crate::extensions::NDArrayBuffer;
-use image::{DynamicImage, GenericImageView, ImageBuffer, Rgb};
-use stretchrs;
+use image::{GenericImageView, ImageBuffer, Rgb};
 use stretchrs::gamma::Stretcher;
 
 mod extensions;

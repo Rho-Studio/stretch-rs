@@ -41,19 +41,15 @@ impl Stretcher {
     fn gamma_from_image_buffer(data: &Array3<f32>) -> (f32, f32) {
         let mut gamma = 1.;
 
-        println!("Computing midtone");
-
         let (mut vec, _) = data.clone().into_raw_vec_and_offset();
         vec.par_sort_unstable_by(|a, b| a.partial_cmp(b).unwrap());
 
         let mut midtone = vec[vec.len() / 2];
 
-        println!("Midtone: {}", midtone);
-
         let input_midtone = midtone;
 
         if midtone < 0.5 {
-            midtone = midtone * 2.;
+            midtone *= 2.;
             gamma = (1. + (1.2 * (1. - midtone))).min(1.5);
         } else if midtone > 0.5 {
             midtone = (midtone * 2.) - 1.;
@@ -64,8 +60,6 @@ impl Stretcher {
     }
 
     pub fn apply(&self, data: &mut Array3<f32>) {
-        println!("{self:?}");
-
         data.par_iter_mut().for_each(|x| {
             *x = (*x - self.input_shadow) / (self.input_highlight - self.input_shadow);
 
